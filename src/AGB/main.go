@@ -16,6 +16,10 @@ func main() {
 	go worker(jobs, results)
 	go worker(jobs, results)
 	go worker(jobs, results)
+	go worker(jobs, results)
+	go worker(jobs, results)
+	go worker(jobs, results)
+	go worker(jobs, results)
 	
 	for i := 0; i < 50; i++ {
 		jobs <- i
