@@ -21,9 +21,9 @@ func timeTrack(start time.Time, name string) {
 
 /*
 Solution 1: */
-func fibonacci() func() uint {
-	var v1, v2 uint = 0, 1
-	return func() uint {
+func fibonacci() func() int {
+	var v1, v2 int = 0, 1
+	return func() int {
 		v2 = v2 + v1
 		v1 = v2 - v1
 		return v2 - v1
@@ -60,33 +60,16 @@ func fibonacci() func() int {
 /*
 Solution 4:
 func fibonacci() func() int {
-    a, b := 1, 0
-    return func() int {
-        a, b = b, a+b
-        return a
-    }
-}
-*/
-
-/*
-Solution 5:
-func fibonacci() func(int) int {
-	first := 0
-	second := 1
-	return func(i int) int {
-		if i == 0 || i == 1 {
-			return i
-		}
-		sum := first + second
-		first = second
-		second = sum
-		return sum
+	a, b := 1, 0
+	return func() int {
+		a, b = b, a+b
+		return a
 	}
 }
 */
 
 /*
-Solution 6:
+Solution 5:
 func fibonacci() func() int {
 	previous := 0
 	last := 0
@@ -100,8 +83,8 @@ func fibonacci() func() int {
 			result = last + previous
 		}
 
-		previous = last;
-		last = result;
+		previous = last
+		last = result
 		index++
 
 		return int(result)
@@ -110,40 +93,21 @@ func fibonacci() func() int {
 */
 
 /*
-Solution 7:
+Solution 6:
 func fibonacci() func() int {
 	a, b := 0, 1
 	return func() int {
 		result := a // Store the result value before translations
-		c := a + b // Fibonacci
-		a = b // Translation
-		b = c // Translation
+		c := a + b  // Fibonacci
+		a = b       // Translation
+		b = c       // Translation
 		return result
 	}
 }
 */
 
 /*
-Solution 8:
-func fibonacci() func() int {
-    a: = 0
-    b: = 1
-    sum: = a + b
-    return func() int {
-        if a == 0 {
-            a = b
-            return 0
-        }
-        a = b
-        b = sum
-        sum = a + b
-        return a
-    }
-}
-*/
-
-/*
-Solution 9:
+Solution 7:
 func fibonacci() func() int {
 	a, b := 1, 0
 	return func() int {
@@ -154,7 +118,34 @@ func fibonacci() func() int {
 */
 
 /*
-Solution 10, with Slice:
+Solution 8 :
+func fibonacci() func() int {
+	n := 0
+	a := 0
+	b := 1
+	c := a + b
+	return func() int {
+		var ret int
+		switch {
+		case n == 0:
+			n++
+			ret = 0
+		case n == 1:
+			n++
+			ret = 1
+		default:
+			ret = c
+			a = b
+			b = c
+			c = a + b
+		}
+		return ret
+	}
+}
+*/
+
+/*
+Solution 9, with Slice:
 func fibonacci() func() int {
 	var i []int
 	return func() int {

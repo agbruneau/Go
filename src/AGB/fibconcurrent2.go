@@ -2,26 +2,22 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func main() {
-	jobs := make(chan int, 50)
-	results := make(chan int, 50)
+	defer elapsed()()
+	jobs := make(chan int, 100)
+	results := make(chan int, 100)
 
+	// concurrent workers
+	// remove or add some to test different configs
 	go worker(jobs, results)
 	go worker(jobs, results)
 	go worker(jobs, results)
 	go worker(jobs, results)
-	go worker(jobs, results)
-	go worker(jobs, results)
-	go worker(jobs, results)
-	go worker(jobs, results)
-	go worker(jobs, results)
-	go worker(jobs, results)
-	go worker(jobs, results)
-	go worker(jobs, results)
-	
-	for i := 0; i < 50; i++ {
+
+	for i := 0; i < 100; i++ {
 		jobs <- i
 	}
 	close(jobs)
@@ -41,6 +37,15 @@ func fib(n int) int {
 	if n <= 1 {
 		return n
 	}
-
 	return fib(n-1) + fib(n-2)
 }
+
+// calculate time elapsed
+func elapsed() func() {
+	start := time.Now()
+	return func() {
+		fmt.Printf("Calculation took %v\n", time.Since(start))
+	}
+}
+
+// Happy Fibonacci day :)
