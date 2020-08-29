@@ -1,3 +1,4 @@
+/* A Tour of Go Exercise: Fibonacci closure */
 package main
 
 import (
