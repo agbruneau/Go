@@ -39,7 +39,6 @@ func fibonacci() func() int {
 		defer func() {
 			v1, v2 = v2, v1+v2
 		}()
-
 		return v1
 	}
 }
@@ -47,29 +46,6 @@ func fibonacci() func() int {
 
 /*
 Solution 3:
-func fibonacci() func() int {
-	v1, v2 := 0, 1
-	return func() int {
-		f := v1
-		v1, v2 = v2, v2+f
-		return f
-	}
-}
-*/
-
-/*
-Solution 4:
-func fibonacci() func() int {
-	a, b := 1, 0
-	return func() int {
-		a, b = b, a+b
-		return a
-	}
-}
-*/
-
-/*
-Solution 5:
 func fibonacci() func() int {
 	previous := 0
 	last := 0
@@ -93,7 +69,7 @@ func fibonacci() func() int {
 */
 
 /*
-Solution 6:
+Solution 4:
 func fibonacci() func() int {
 	a, b := 0, 1
 	return func() int {
@@ -107,18 +83,7 @@ func fibonacci() func() int {
 */
 
 /*
-Solution 7:
-func fibonacci() func() int {
-	a, b := 1, 0
-	return func() int {
-		a, b = b, a+b // two assignment happens parallely, but if you enforce it sequentially, it won't work
-		return a
-	}
-}
-*/
-
-/*
-Solution 8 :
+Solution 5 :
 func fibonacci() func() int {
 	n := 0
 	a := 0
@@ -145,7 +110,7 @@ func fibonacci() func() int {
 */
 
 /*
-Solution 9, with Slice:
+Solution 6, with Slice:
 func fibonacci() func() int {
 	var i []int
 	return func() int {
