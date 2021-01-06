@@ -43,7 +43,7 @@ func main() {
 	elapsed1 := time.Since(start1)
 	start2 := time.Now()
 	for i := 0; i <= 100000000; i++ {
-		fmt.Printf("Fib2(%d) is %d \n", i, fib2(i))
+		fib2(i)
 	}
 	elapsed2 := time.Since(start2)
 	fmt.Printf("time eclibaced1 is %s \n", elapsed1)
