@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/big"
+	"time"
 )
 
 // Fibonacci calculates Fibonacci number.
@@ -40,6 +41,19 @@ func FibonacciBig(n uint) *big.Int {
 }
 
 func main() {
+	start := time.Now()
 	fmt.Println("20:  ", Fibonacci(20))
+	elapsed := time.Since(start)
+	fmt.Printf("time eclibaced is %s \n", elapsed)
+
+	start = time.Now()
 	fmt.Println("200: ", FibonacciBig(200))
+	elapsed = time.Since(start)
+	fmt.Printf("time eclibaced is %s \n", elapsed)
+
+	start = time.Now()
+	fmt.Println("1000000: ", FibonacciBig(1000000))
+	elapsed = time.Since(start)
+	fmt.Printf("time eclibaced is %s \n", elapsed)
+
 }
