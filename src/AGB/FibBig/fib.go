@@ -52,7 +52,7 @@ func main() {
 	fmt.Printf("time eclibaced is %s \n", elapsed)
 
 	start = time.Now()
-	fmt.Println("1000000: ", FibonacciBig(1000000))
+	fmt.Println("100000000: ", FibonacciBig(100000000))
 	elapsed = time.Since(start)
 	fmt.Printf("time eclibaced is %s \n", elapsed)
 
