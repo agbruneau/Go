@@ -42,20 +42,17 @@ func FibonacciBig(n uint) *big.Int {
 
 func main() {
 	start := time.Now()
-	fmt.Println("20:  ", Fibonacci(20))
+	Fibonacci(2000)
 	elapsed := time.Since(start)
-	fmt.Printf("time eclibaced is %s \n", elapsed)
+	fmt.Printf("time eclibaced for Fibonacci(2000) is %s  \n", elapsed)
 
 	start = time.Now()
-	fmt.Println("200: ", FibonacciBig(200))
+	FibonacciBig(2000)
 	elapsed = time.Since(start)
-	fmt.Printf("time eclibaced is %s \n", elapsed)
+	fmt.Printf("time eclibaced for FibBig(2000) is %s \n", elapsed)
 
 	start = time.Now()
-	//	fmt.Println("100000000: ", FibonacciBig(100000000))
-	fmt.Println("100000000: ")
-	FibonacciBig(100000000)
+	FibonacciBig(1000000)
 	elapsed = time.Since(start)
-	fmt.Printf("time eclibaced is %s \n", elapsed)
-
+	fmt.Printf("time eclibaced is FibBig(1 000 000) %s \n", elapsed)
 }
